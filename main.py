@@ -33,4 +33,4 @@ async def ping(ctx):  # 當使用者打下 `ping` 就會自動傳入 ctx 參數�
 @bot.command()
 async def 專題(ctx):
     await ctx.send(ctx.message.author.mention + '我欠你很多人情')    
-bot.run("NzAzMjI0OTM3NzQ5NDEzODg4.XqVLAw.Eh5JcfZnn54iooMvUqFMIe8bIMQ")  # arg 為 discord bot token
+bot.run("NzAzMjI0OTM3NzQ5NDEzODg4.XqWMzQ.6QtVOjuLvObFAk2nhHr3C3EYBDg")  # arg 為 discord bot token
