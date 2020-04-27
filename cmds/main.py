@@ -11,7 +11,7 @@ class Main(Cog_Extension):  # Main 繼承 commands.Cog 裡面的所有屬性、�
     # ctx = context(上下文)
     # A:嗨 (上文), 上文包含右側屬性：(使用者, user-id, 所在伺服器, 所在頻道), ctx 則包含了這些屬性, 所以無須像 on_member_join 一樣需要再獲取 channel-id
     # B:安安 (下文)
-    @commands.command()
+    @commands.command() # 從 bot.command 改成 commands.command 是因為我們繼承了 commands.Cog (classes.py)
     async def ping(self, ctx):  # 當使用者打下 `ping` 就會自動傳入 ctx 參數，其包含使用者的相關屬性
         #member = discord.Member
         #channel = bot.get_channel(703896647293206582)

@@ -8,7 +8,7 @@ with open('setting.json', 'r', encoding="utf8") as jfile:  # jfile 如同 input 
     jdata = json.load(jfile)    # json.load() 讀取 file stream 內容並將其設給 jdata
 
 class React(Cog_Extension):
-    @commands.command()
+    @commands.command() # 從 bot.command 改成 commands.command 是因為我們繼承了 commands.Cog (classes.py)
     async def 專題(self, ctx):
         await ctx.send(ctx.message.author.mention + ' 我欠你很多人情')
 
