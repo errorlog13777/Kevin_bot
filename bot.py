@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands  # 從 discord.ext 導入 commands 模組
 import json  # 導入 json mod (設定檔使用 .json file)
 import random
+import os
 
 with open('setting.json', 'r', encoding="utf8") as jfile:  # jfile 如同 input file stream(ifstream)
     jdata = json.load(jfile)    # json.load() 讀取 file stream 內容並將其設給 jdata
@@ -25,35 +26,23 @@ async def on_member_remove(member):
     channel = bot.get_channel(jdata['Leave_channel'])
     await channel.send(f'{member.mention} 我把你當兄弟，偶爾開我玩笑，大家嘻嘻哈哈帶個氣氛我不會生氣 但我還是有個界線的，每個人都有。')
 
-# ctx = context(上下文)
-# A:嗨 (上文), 上文包含右側屬性：(使用者, user-id, 所在伺服器, 所在頻道), ctx 則包含了這些屬性, 所以無須像 on_member_join 一樣需要再獲取 channel-id
-# B:安安 (下文)
 @bot.command()
-async def ping(ctx):  # 當使用者打下 `ping` 就會自動傳入 ctx 參數，其包含使用者的相關屬性
-    #member = discord.Member
-    #channel = bot.get_channel(703896647293206582)
-    #await channel.send(f'{ctx.message.author}')
-    await ctx.send(ctx.message.author.mention + f'{round(bot.latency * 1000)} (ms)')  # latency = 延遲(秒), round() 將小數點後四捨五入
+async def load(ctx, extension):
+    bot.load_extension(f'cmds.{extension}')
+    await ctx.send(f'Loaded {extension} done.')
 
 @bot.command()
-async def 專題(ctx):
-    await ctx.send(ctx.message.author.mention + ' 我欠你很多人情')
+async def unload(ctx, extension):
+    bot.unload_extension(f'cmds.{extension}')
+    await ctx.send(f'Unloaded {extension} done.')
 
 @bot.command()
-async def pic1(ctx):  # 讀取本機圖片
-    pic = discord.File(jdata['pic'][0])  # 用 discord.File() 將其轉換成 discord 可讀取的"檔案"
-    await ctx.send(ctx.message.author.mention)
-    await ctx.send(file=pic) # file=pic 讓 discord 知道這是一個檔案
+async def reload(ctx, extension):
+    bot.reload_extension(f'cmds.{extension}')
+    await ctx.send(f'Reloaded {extension} done.')
 
-@bot.command()
-async def ran_pic(ctx):     # 隨機本機圖片
-    random_pic = random.choice(jdata['pic'])
-    pic = discord.File(random_pic)
-    await ctx.send(file = pic)
-
-@bot.command()
-async def ran_web_pic(ctx): # 隨機網路圖片
-    random_pic = random.choice(jdata['url_pic'])
-    await ctx.send(random_pic)  # 因為網址不是檔案，所以不需要先轉換成 discord 能讀取的格式
-
-bot.run(jdata['TOKEN'])  # arg 為 discord bot token
+for filename in os.listdir('./cmds'):
+    if filename.endswith('.py'):  # 檔案名稱結尾為 .py
+        bot.load_extension(f'cmds.{filename[:-3]}')  # ori: main.py, [:-3]: main
+if __name__ == "__main__":
+    bot.run(jdata['TOKEN'])  # arg 為 discord bot token
