@@ -1,5 +1,9 @@
 import discord
 from discord.ext import commands  # 從 discord.ext 導入 commands 模組
+import json  # 導入 json mod (設定檔使用 .json file)
+
+with open('setting.json', 'r', encoding="utf8") as jfile:  # jfile 如同 ifstream object 
+    jdata = json.load(jfile)
 
 bot = commands.Bot(command_prefix='!!')  # 將 Bot 實體存放到 bot 中, 也就是說 bot 會代表這隻機器人
                                          # 裡面通常會存放一個 command_prefix 作為 argument, 代表呼叫機器人前需要 + 的 prefix(前綴)
@@ -11,13 +15,13 @@ async def on_ready():               # https://blog.techbridge.cc/2018/06/15/pyth
 @bot.event
 async def on_member_join(member):
     print(f'{member} join!')
-    channel = bot.get_channel(703898937806946324)
+    channel = bot.get_channel(jdata['Welcome_channel'])
     await channel.send(f'{member.mention} 大家都是我兄弟！') # 由於此功能以協程寫成, 所以使用時需要先加上 await
 
 @bot.event
 async def on_member_remove(member):
     print(f'{member} leave!')
-    channel = bot.get_channel(703898997726773268)
+    channel = bot.get_channel(jdata['Leave_channel'])
     await channel.send(f'{member.mention} 我把你當兄弟，偶爾開我玩笑，大家嘻嘻哈哈帶個氣氛我不會生氣 但我還是有個界線的，每個人都有。')
 
 # ctx = context(上下文)
@@ -32,5 +36,5 @@ async def ping(ctx):  # 當使用者打下 `ping` 就會自動傳入 ctx 參數�
 
 @bot.command()
 async def 專題(ctx):
-    await ctx.send(ctx.message.author.mention + '我欠你很多人情')    
-bot.run("NzAzMjI0OTM3NzQ5NDEzODg4.XqWMzQ.6QtVOjuLvObFAk2nhHr3C3EYBDg")  # arg 為 discord bot token
+    await ctx.send(ctx.message.author.mention + ' 我欠你很多人情')    
+bot.run(jdata['TOKEN'])  # arg 為 discord bot token
