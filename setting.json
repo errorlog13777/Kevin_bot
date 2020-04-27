@@ -1,5 +1,8 @@
 {
-    "TOKEN":"NzAzMjI0OTM3NzQ5NDEzODg4.XqZrig.hLfZ6mi6vflXHyQ5haaapADTOnA",
+    "TOKEN":"NzAzMjI0OTM3NzQ5NDEzODg4.XqaV3A.2lkQuA1EGzmDmEBu0Yq0jk6XCqc",
     "Welcome_channel":703898937806946324,
-    "Leave_channel":703898997726773268
+    "Leave_channel":703898997726773268,
+    
+    "pic":["C:\\Users\\Salieri\\Documents\\cpprepos\\Kevin_bot\\pic\\1.gif", "C:\\Users\\Salieri\\Documents\\cpprepos\\Kevin_bot\\pic\\2.jpg"],
+    "url_pic":["https://i.imgur.com/KrkwDJ2.gif", "https://i.imgur.com/VImgefL.jpg"]
 }

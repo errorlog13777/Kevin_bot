@@ -16,5 +16,5 @@ pip install discord.py
 ## Getting started 
 
 ```console
-python main.py
+python bot.py
 ```
