@@ -11,6 +11,10 @@ class React(Cog_Extension):
     @commands.command() # 從 bot.command 改成 commands.command 是因為我們繼承了 commands.Cog (classes.py)
     async def 專題(self, ctx):
         await ctx.send(ctx.message.author.mention + ' 我欠你很多人情')
+    
+    @commands.command()
+    async def 重考(self, ctx):
+        await ctx.send(ctx.message.author.mention + '\n重考從來就不是什麼童話故事\n從來就不會有什麼⋯\n無悔的努力 甜蜜的成功\n一切就只是一場賭注罷了\n而且這一次 我又輸慘了\n果然最後還是打臉了自己\n.\n早就已經忘記自己在追求什麼了\n我現在只想要⋯\n有一刻身心是自由的\n哪怕只有一瞬間\n能夠讓我暫時卸下肩膀上的疼痛\n能夠讓我暫時停住胸口上的悶痛\n能夠讓我不用\n為了什麼該死的人生成就\n不斷的被夢想追殺\n能夠讓我不用\n為了保護那微小的希望\n免於被現實扼殺\n早就忘記了什麼是玩樂\n犧牲了太多 快樂早已負債\n抱歉我那麼消極\n但我真的好累⋯⋯\nAccept reality\nChange reality\nKilled by reality')
 
     @commands.command()
     async def pic1(self, ctx):  # 讀取本機圖片
