@@ -15,6 +15,8 @@ pip install discord.py
 
 ## Getting started 
 
+**記得先將 setting.json 的 TOKEN 改成自己機器人的 token**
+
 ```console
 python bot.py
 ```
