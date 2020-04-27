@@ -44,5 +44,9 @@ async def reload(ctx, extension):
 for filename in os.listdir('./cmds'):
     if filename.endswith('.py'):  # 檔案名稱結尾為 .py
         bot.load_extension(f'cmds.{filename[:-3]}')  # ori: main.py, [:-3]: main
+# http://blog.castman.net/%E6%95%99%E5%AD%B8/2018/01/27/python-name-main.html
+# 若檔案是直接執行(透過命令列)，__name__ 的值會是 __main__; 如果是被作為 module import 的 python script __name__ 的值會是 python script 檔案名稱
+# 用 __name__ 可以分辨程式是被當成 module import 的還是被直接執行的
+# 直接執行會跑完腳本所有內容，當成模組只會用到被呼叫的部分(內容)       
 if __name__ == "__main__":
     bot.run(jdata['TOKEN'])  # arg 為 discord bot token
