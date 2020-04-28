@@ -14,17 +14,6 @@ bot = commands.Bot(command_prefix='!!')  # 將 Bot 實體存放到 bot 中, 也�
 async def on_ready():               # https://blog.techbridge.cc/2018/06/15/python-decorator-%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/
     print(">> Bot is online <<")    # https://www.hansshih.com/post/85896158975/%E8%90%AC%E6%83%A1%E7%9A%84-python-decorator-%E7%A9%B6%E7%AB%9F%E6%98%AF%E4%BB%80%E9%BA%BC
 
-@bot.event  # 這裡不用變成 commands.command 的原因就是因為其沒有繼承 commands.Cog
-async def on_member_join(member):   # 這裡的參數不用加 self 是因為其不在 class 內
-    print(f'{member} join!')    # python 3.6 above, fstring, {} 放變數
-    channel = bot.get_channel(jdata['Welcome_channel'])
-    await channel.send(f'{member.mention} 大家都是我兄弟！') # 由於此功能以協程寫成, 所以使用時需要先加上 await
-
-@bot.event
-async def on_member_remove(member):
-    print(f'{member} leave!')
-    channel = bot.get_channel(jdata['Leave_channel'])
-    await channel.send(f'{member.mention} 我把你當兄弟，偶爾開我玩笑，大家嘻嘻哈哈帶個氣氛我不會生氣 但我還是有個界線的，每個人都有。')
 
 @bot.command()
 async def load(ctx, extension):
