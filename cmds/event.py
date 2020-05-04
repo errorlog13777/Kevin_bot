@@ -19,6 +19,7 @@ class Event(Cog_Extension):
         channel = self.bot.get_channel(jdata['Leave_channel'])
         await channel.send(f'{member.mention} 我把你當兄弟，偶爾開我玩笑，大家嘻嘻哈哈帶個氣氛我不會生氣 但我還是有個界線的，每個人都有。')
 
+    # 如果是 bot 本身講話就不重複(需判斷)
     @commands.Cog.listener()
     async def on_message(self, msg):  # 關鍵字觸發事件 (使用者每次輸入都會觸發這個事件)
         keyword = ['apple', 'pen', 'pie', 'abc']
