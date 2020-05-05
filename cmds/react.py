@@ -34,5 +34,8 @@ class React(Cog_Extension):
         random_pic = random.choice(jdata['url_pic'])
         await ctx.send(random_pic)  # 因為網址不是檔案，所以不需要先轉換成 discord 能讀取的格式
 
+    @commands.command()
+    async def test_com(self, ctx):
+        await ctx.send("Here’s an example of ~~crossed out~~ text")
 def setup(bot):             # 機器人執行時會自動呼叫 setup, bot 為 bot.py 內的實體 bot
     bot.add_cog(React(bot))  # bot.add_cog() 呼叫 main.py 的 Main 並傳入參數 bot

@@ -41,7 +41,14 @@ class Main(Cog_Extension):  # Main 繼承 commands.Cog 裡面的所有屬性、�
     @commands.command()
     async def purge(self, ctx, num: int):  # num : int 的意思代表先註解 argument 的資料型態
         deleted = await ctx.channel.purge(limit=num + 1)  # +1 的作用為多刪除打指令的訊息
+        await ctx.send(ctx.author.mention + "<Message deleted>")
         # await ctx.send(f'Deleted {deleted} message(s)')
+    """
+    @commands.command()
+    async def delete_msg(self, ctx, num = 0):
+        await ctx.message.delete()
+    """    
+        
 
     """
     def is_me(self, ctx, m):
@@ -54,7 +61,7 @@ class Main(Cog_Extension):  # Main 繼承 commands.Cog 裡面的所有屬性、�
         # await ctx.send(f'Deleted {deleted} message(s)')
     """
     @commands.command()
-    async def purge_all(self, ctx):
+    async def purge_All(self, ctx):
         await ctx.channel.purge(before = datetime.datetime.now())
 
 def setup(bot):             # 機器人執行時會自動呼叫 setup, bot 為 bot.py 內的實體 bot
