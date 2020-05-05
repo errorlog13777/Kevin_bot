@@ -43,6 +43,8 @@ class Main(Cog_Extension):  # Main 繼承 commands.Cog 裡面的所有屬性、�
         deleted = await ctx.channel.purge(limit=num + 1)  # +1 的作用為多刪除打指令的訊息
         await ctx.send(ctx.author.mention + "<Message deleted>")
         # await ctx.send(f'Deleted {deleted} message(s)')
+
+    # 讀取頻道訊息 -> 確認是否為指令輸入者 -> 刪除訊息(n)
     """
     @commands.command()
     async def delete_msg(self, ctx, num = 0):
