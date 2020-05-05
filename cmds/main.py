@@ -25,6 +25,13 @@ class Main(Cog_Extension):  # Main 繼承 commands.Cog 裡面的所有屬性、�
         await ctx.send(jdata['salmon'])
 
     @commands.command()
+    async def owner_id(self, ctx):
+        guild = self.bot.get_guild(jdata['Server_id'])  # guild 等同於 server, 要先讓機器人知道是在哪個 server 中
+        # owner = guild.owner_id
+        # await ctx.send(owner)
+        await ctx.send(guild.owner_id)
+
+    @commands.command()
     async def em(self, ctx):    # embed 生成器 https://cog-creators.github.io/discord-embed-sandbox/
         embed=discord.Embed(title="Kevin Bot", url="https://www.instagram.com/ke_.y.c/", description="Just a Kevin Bot", color=0x00ff40, timestamp=datetime.datetime.now() - datetime.timedelta(hours = 8))
         embed.set_author(name="Kevin fans", url="https://www.instagram.com/ke_.y.c/")
@@ -37,6 +44,28 @@ class Main(Cog_Extension):  # Main 繼承 commands.Cog 裡面的所有屬性、�
     async def sayd(self, ctx, *, msg):  # 刪除使用者訊息，由機器人複誦 (* 代表在此之後的參數不論有多少都會作為 msg 的 argument, msg 為使用者訊息參數)
         await ctx.message.delete()
         await ctx.send(msg)
+
+    """
+    @commands.command()
+    async def msg_del(self, ctx, num: int):
+        # channel_ = self.bot.get_channel(ctx.channel())
+        # channel_ = self.bot.get_channel(703898937806946324)
+        async for message in ctx.channel.history(limit = num):
+            if message.author == ctx.author:
+                await ctx.channel.delete_messages(message)
+                await ctx.send("just check!!")
+    """ 
+
+    """
+    @client.command(pass_context=True)
+    async def msg_del(self, ctx, num = 0):
+        channel = ctx.message.channel
+        messages = []
+        async for message in channel.history(limit=num):
+            message.append(messages)
+        await channel.delete_messages(messages)
+        await ctx.send("messages deleted.")
+    """
 
     @commands.command()
     async def purge(self, ctx, num: int):  # num : int 的意思代表先註解 argument 的資料型態
