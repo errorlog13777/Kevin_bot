@@ -45,6 +45,25 @@ class Main(Cog_Extension):  # Main 繼承 commands.Cog 裡面的所有屬性、�
         await ctx.message.delete()
         await ctx.send(msg)
 
+    @commands.command()
+    async def msg_del(self, ctx, num: int): # 刪除自己的訊息
+        async for message in ctx.channel.history(limit = num + 1):
+            if message.author == ctx.author:
+                await message.delete()          # 若用 ctx.message.delete() 代表是以頻道的角度去刪除訊息，若以 message.delete() 則代表是以訊息的角度去刪除訊息，因為 message 先過濾了訊息作者，因此其刪除的訊息為過濾後的，反之以 ctx 則不然。
+
+    """
+    @commands.command()
+    async def msg_del(self, ctx, num: int):
+        # channel_ = self.bot.get_channel(ctx.channel())
+        # channel_ = self.bot.get_channel(703898937806946324)
+        async for message in ctx.channel.history(limit = num):
+            if message.author == ctx.author:
+                # await ctx.channel.delete_messages(ctx.message)
+                # await ctx.send("just check!!")
+                # await message.delete()
+                await ctx.send(message)
+    """
+
     """
     @commands.command()
     async def msg_del(self, ctx, num: int):
@@ -92,8 +111,9 @@ class Main(Cog_Extension):  # Main 繼承 commands.Cog 裡面的所有屬性、�
         # await ctx.send(f'Deleted {deleted} message(s)')
     """
     @commands.command()
-    async def purge_All(self, ctx):
-        await ctx.channel.purge(before = datetime.datetime.now())
+    async def purge_All(self, ctx, confirm = ""):  # 清除頻道全部訊息，危險指令...
+        if confirm == "CONFIRM!!":
+            await ctx.channel.purge(before = datetime.datetime.now())
 
 def setup(bot):             # 機器人執行時會自動呼叫 setup, bot 為 bot.py 內的實體 bot
     bot.add_cog(Main(bot))  # bot.add_cog() 呼叫 main.py 的 Main 並傳入參數 bot

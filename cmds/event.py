@@ -24,18 +24,22 @@ class Event(Cog_Extension):
         keyword = ['apple', 'pen', 'pie', 'abc']
         if msg.content in keyword and msg.author != self.bot.user:  # self.bot.user = 機器人本身
             await msg.channel.send('apple')  # 在 msg 所在頻道發送
-        keyword2 = ["Kevin", "裝熟", "社交大師", "重考", "綠帽", "綠扁帽大將軍", "阿兵哥", "1-1", "猴子屁股臉", "綠頭"]
+
+        keyword2 = ["Kevin", "kevin", "裝熟", "社交大師", "重考", "綠帽", "綠扁帽大將軍", "阿兵哥", "1-1", "猴子屁股臉", "綠頭", "張凱文"]
         if msg.content in keyword2 and msg.author != self.bot.user:  # self.bot.user = 機器人本身
-            for key in keyword2:
-                if key in msg.content:
-                    await msg.channel.send('有人提到我嗎？')
+            await msg.channel.send('？')
+
         keyword3 = ["數C", "統測"]
         if msg.content in keyword3 and msg.author != self.bot.user:
             await msg.channel.send('統測可不可以快點來\n已經沒什麼好讀的\n第一科考數理特別愉快\n')
             await msg.channel.send("~~第一科考數理特別愉快~~\n我錯了當我沒說\n考完完全沒有如釋重負的感覺...")
+
         keyword4 = ["微積分"]
         if msg.content in keyword4 and msg.author != self.bot.user:
-            await msg.channel.send("用大學微積分的公式\n\n  來解高中職微積分\n\n               愉悅")   
+            await msg.channel.send("用大學微積分的公式\n\n  來解高中職微積分\n\n               愉悅")
+
+        if msg.content == "張育誠":
+            await msg.channel.send("好熟悉的名字...")
 
 
 def setup(bot):
