@@ -44,7 +44,45 @@ class Main(Cog_Extension):  # Main 繼承 commands.Cog 裡面的所有屬性、�
     async def sayd(self, ctx, *, msg):  # 刪除使用者訊息，由機器人複誦 (* 代表在此之後的參數不論有多少都會作為 msg 的 argument, msg 為使用者訊息參數)
         await ctx.message.delete()
         await ctx.send(msg)
-
+    """
+    @commands.command()
+    async def count_msg(self, ctx, str, num=100):  # 計算到訊息 str 前有多少個訊息(應該有更好的做法)
+        count = 0
+        async for message in ctx.channel.history(limit=num + 1):
+            count += 1
+            if message.content == str:
+                await ctx.send(f'至 {str} 之前，共有 {count} 則訊息')
+    """
+    @commands.command()
+    async def count_msg(self, ctx, str, num=100):  # 計算到訊息 str 前有多少個訊息(應該有更好的做法) (只有計算自己的部分)
+        count = 1
+        flag = 0
+        async for message in ctx.channel.history(limit=num + 1):
+            if str in message.content and message.author == ctx.author:
+                await ctx.send(f'A total of {count + 1} messages(including this) to "{str}"')
+                flag = 1
+            elif count == num and flag == 0:
+                await ctx.send(f"Can't find the same string in the range({num}).")
+            count += 1
+    
+    @commands.command()
+    async def count_bot_msg(self, ctx, str, num=100):  # 計算到訊息 str 前有多少個訊息(應該有更好的做法) (計算 bot)
+        count = 1
+        flag = 0
+        async for message in ctx.channel.history(limit=num + 1):
+            if str in message.content and message.author == self.bot.user:
+                await ctx.send(f'A total of {count + 1} messages(including this) to "{str}"')
+                flag = 1
+            elif count == num and flag == 0:
+                await ctx.send(f"Can't find the same string in the range({num}).")
+            count += 1
+    
+    @commands.command()
+    async def botmsg_del(self, ctx, num: int): # 刪除 bot 的訊息
+        async for message in ctx.channel.history(limit = num + 1):
+            if message.author == self.bot.user:
+                await message.delete()          # 若用 ctx.message.delete() 代表是以頻道的角度去刪除訊息，若以 message.delete() 則代表是以訊息的角度去刪除訊息，因為 message 先過濾了訊息作者，因此其刪除的訊息為過濾後的，反之以 ctx 則不然。
+    
     @commands.command()
     async def msg_del(self, ctx, num: int): # 刪除自己的訊息
         async for message in ctx.channel.history(limit = num + 1):
