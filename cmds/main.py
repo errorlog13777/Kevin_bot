@@ -33,10 +33,10 @@ class Main(Cog_Extension):  # Main 繼承 commands.Cog 裡面的所有屬性、�
 
     @commands.command()
     async def em(self, ctx):    # embed 生成器 https://cog-creators.github.io/discord-embed-sandbox/
-        embed=discord.Embed(title="Kevin Bot", url="https://www.instagram.com/ke_.y.c/", description="Just a Kevin Bot", color=0x00ff40, timestamp=datetime.datetime.now() - datetime.timedelta(hours = 8))
-        embed.set_author(name="Kevin fans", url="https://www.instagram.com/ke_.y.c/")
+        embed=discord.Embed(title="Kevin Bot", url="https://www.instagram.com/ke._.y.c/", description="Just a Kevin Bot\n 過得健康，過得快樂，過得更強壯", color=0x00ff40, timestamp=datetime.datetime.now() - datetime.timedelta(hours = 8))
+        embed.set_author(name="Kevin fans", url="https://www.instagram.com/ke._.y.c/")
         embed.set_thumbnail(url="https://scontent-frt3-2.cdninstagram.com/v/t51.2885-19/91286268_679708962764318_6840888535994597376_n.jpg?_nc_ht=scontent-frt3-2.cdninstagram.com&_nc_ohc=fIe4jC20CCEAX_2IZG1&oh=86441324bde90181657aadbd83680dc2&oe=5ED2922F")
-        embed.add_field(name="website", value="https://www.instagram.com/ke_.y.c/", inline=False)
+        embed.add_field(name="website", value="https://www.instagram.com/ke._.y.c/", inline=False)
         embed.set_footer(text="高科電神張凱文")
         await ctx.send(embed=embed)
 

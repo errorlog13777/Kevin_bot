@@ -12,7 +12,7 @@ class Task(Cog_Extension):
             self.channel = self.bot.get_channel(706451165386244147)
             while not self.bot.is_closed():  # 當機器人沒有被關閉時(若 bot 一直在線上)
                 await self.channel.send("Hi! 我是 Kevin Zhang! 請輸入 \"!!help\" 來更了解我 :)\n\n")
-                await asyncio.sleep(5)  # 單位(s)
+                await asyncio.sleep(500)  # 單位(s)
         
         self.bot.loop.create_task(interval())  # 創建一個背景作業的 task, 用 bot 方法 loop 創建一個 task 也就是我們設定的 interval
     @commands.command()

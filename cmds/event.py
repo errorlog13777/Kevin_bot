@@ -1,5 +1,5 @@
 import discord
-import json
+import json, asyncio
 from discord.ext import commands
 from core.classes import Cog_Extension
 
@@ -24,22 +24,35 @@ class Event(Cog_Extension):
         keyword = ['apple', 'pen', 'pie', 'abc']
         if msg.content in keyword and msg.author != self.bot.user:  # self.bot.user = 機器人本身
             await msg.channel.send('apple')  # 在 msg 所在頻道發送
-
-        keyword2 = ["Kevin", "kevin", "裝熟", "社交大師", "重考", "綠帽", "綠扁帽大將軍", "阿兵哥", "1-1", "猴子屁股臉", "綠頭", "張凱文"]
-        if msg.content in keyword2 and msg.author != self.bot.user:  # self.bot.user = 機器人本身
-            await msg.channel.send('？')
+        
+        keyword2 = ["Kevin", "kevin", "裝熟", "社交大師", "重考", "綠帽", "綠扁帽大將軍", "阿兵哥", "1-1", "猴子屁股臉", "綠頭", "張凱文", "restart"]
+        # if msg.content in keyword2 and msg.author != self.bot.user:  # 這樣寫法錯誤的地方在於邏輯錯誤，如果 msg.content 在 keryword2 中，這就代表 msg.content 必須完全符合 keyword2 的任一單詞，而非 keyword2 的任一單詞符合 msg.content 的內容
+        # if keyword2 in msg.content and msg.author != self.bot.user:  # 這樣寫法錯誤的地方在於 keyword2 是一個 list 而非一個 string, 因為類型不匹配，自然無法比較
+        if msg.author != self.bot.user:
+            for key in keyword2:  # key 為一個 string 對象
+                if key in msg.content:  # 如果 key 的內容在 msg.content 中
+                    await msg.channel.send('？')
+                    break                  # 避免重複發話
+        
 
         keyword3 = ["數C", "統測"]
-        if msg.content in keyword3 and msg.author != self.bot.user:
-            await msg.channel.send('統測可不可以快點來\n已經沒什麼好讀的\n第一科考數理特別愉快\n')
-            await msg.channel.send("~~第一科考數理特別愉快~~\n我錯了當我沒說\n考完完全沒有如釋重負的感覺...")
+        if msg.author != self.bot.user:
+            for key in keyword3:
+                if key in msg.content:
+                    await msg.channel.send('統測可不可以快點來\n已經沒什麼好讀的\n考數理特別快樂\n')
+                    await asyncio.sleep(10)  # 單位(s)
+                    await msg.channel.send("~~考數理特別快樂~~\n當我沒說\n台科掰掰\n我就賭大家都不會\n完全沒有\n如釋重負的感覺")
+                    break                   # 避免重複發話
 
         keyword4 = ["微積分"]
-        if msg.content in keyword4 and msg.author != self.bot.user:
-            await msg.channel.send("用大學微積分的公式\n\n  來解高中職微積分\n\n               愉悅")
+        # if msg.content in keyword4 and msg.author != self.bot.user:
+        if msg.author != self.bot.user:
+            for key in keyword4:
+                if key in msg.content:
+                    await msg.channel.send("用大學微積分的公式\n\n  來解高中職微積分\n\n               愉悅")
 
         if msg.content == "張育誠":
-            await msg.channel.send("好熟悉的名字...")
+            await msg.channel.send("好熟悉的名字...?")
 
 
 def setup(bot):
