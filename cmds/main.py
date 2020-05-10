@@ -21,7 +21,7 @@ class Main(Cog_Extension):  # Main 繼承 commands.Cog 裡面的所有屬性、�
 
     @commands.command()
     async def hi(self, ctx):
-        await ctx.send(ctx.message.author.mention + f' 哈囉，你好這裡是台灣，我是台灣人 Kevin 張凱文，下面這個人是我的女朋友陳鮭魚')
+        await ctx.send(ctx.message.author.mention + f' 哈囉，你好這裡是台灣，我是台灣人 Kevin 張凱文，下面這個人是我的女朋友鮭魚，總之我沒有利用薯條什麼的，講話給我放尊重點')
         await ctx.send(jdata['salmon'])
 
     @commands.command()

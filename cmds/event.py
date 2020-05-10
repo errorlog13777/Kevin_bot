@@ -34,7 +34,6 @@ class Event(Cog_Extension):
                     await msg.channel.send('？')
                     break                  # 避免重複發話
         
-
         keyword3 = ["數C", "統測"]
         if msg.author != self.bot.user:
             for key in keyword3:
@@ -53,7 +52,6 @@ class Event(Cog_Extension):
 
         if msg.content == "張育誠":
             await msg.channel.send("好熟悉的名字...?")
-
 
 def setup(bot):
     bot.add_cog(Event(bot))

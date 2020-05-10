@@ -1,10 +1,16 @@
 {
-    "TOKEN":"NzAzMjI0OTM3NzQ5NDEzODg4.Xrfpvg.1Pk3HpwwUcR3wvF35363JV1oHdA",
-    "Server_id":703896646865387601,
-    "Welcome_channel":703898937806946324,
-    "Leave_channel":703898997726773268,
-    
-    "pic":["discord_bot/pic/1.gif", "discord_bot/pic/2.jpg"],
-    "url_pic":["https://i.imgur.com/KrkwDJ2.gif", "https://i.imgur.com/VImgefL.jpg"],
-    "salmon":"https://i.imgur.com/s8IHAkX.jpg"
+    "TOKEN": "NzAzMjI0OTM3NzQ5NDEzODg4.Xrhzmw.gso8-hB2gdKvc_Z8SpaRJ2ZkL04",
+    "Server_id": 703896646865387601,
+    "Welcome_channel": 703898937806946324,
+    "Leave_channel": 703898997726773268,
+    "time": "0625",
+    "pic": [
+        "discord_bot/pic/1.gif",
+        "discord_bot/pic/2.jpg"
+    ],
+    "url_pic": [
+        "https://i.imgur.com/KrkwDJ2.gif",
+        "https://i.imgur.com/VImgefL.jpg"
+    ],
+    "salmon": "https://i.imgur.com/s8IHAkX.jpg"
 }
