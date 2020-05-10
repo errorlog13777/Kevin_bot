@@ -89,6 +89,10 @@ class Main(Cog_Extension):  # Main 繼承 commands.Cog 裡面的所有屬性、�
             if message.author == ctx.author:
                 await message.delete()          # 若用 ctx.message.delete() 代表是以頻道的角度去刪除訊息，若以 message.delete() 則代表是以訊息的角度去刪除訊息，因為 message 先過濾了訊息作者，因此其刪除的訊息為過濾後的，反之以 ctx 則不然。
 
+    @commands.command()
+    async def gbbot(self, ctx):  # 離開伺服器
+        await ctx.send('good bye ' + ctx.message.author.mention)
+        await ctx.message.guild.leave()
     """
     @commands.command()
     async def msg_del(self, ctx, num: int):
