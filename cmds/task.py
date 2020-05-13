@@ -23,6 +23,8 @@ class Task(Cog_Extension):
             self.channel = self.bot.get_channel(706451165386244147)
             while not self.bot.is_closed():  # 當機器人沒有被關閉時(若 bot 一直在線上)
                 now_time = datetime.datetime.now().strftime('%H%M')  # H = hour, M = min, m = month
+                # now_time = now_time - datetime.timedelta(hours = 8)
+                await self.channel.send(now_time)
                 with open('setting.json', 'r', encoding='utf8') as jfile:   # r = read
                     jdata = json.load(jfile)
                 if now_time == jdata['time'] and self.counter == 0:

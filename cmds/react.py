@@ -2,6 +2,7 @@ import discord
 import random
 import json
 from discord.ext import commands
+from selenium import webdriver
 from core.classes import Cog_Extension
 
 with open('setting.json', 'r', encoding="utf8") as jfile:  # jfile 如同 input file stream(ifstream)
@@ -19,6 +20,7 @@ class React(Cog_Extension):
     @commands.command()
     async def 大學(self, ctx):
         await ctx.send(ctx.message.author.mention + '\n好想快樂的上大學\n到底該飄向何方')
+
     """
     # 不便使用
     @commands.command()
